@@ -6,19 +6,28 @@ import SeasonDisplay from './SeasonDisplay';
 //location user and current month
 //pass season to seasondisplay component
 
-const App = () => {
+class App extends React.Component {
+  constructor(props) {
+    super(props);
 
+    this.state = {
+      lat: null
+    }
 
-  window.navigator.geolocation.getCurrentPosition(
-    (position) => console.log(position),
-    err => console.log(err)
-  );
+    window.navigator.geolocation.getCurrentPosition(
+      (position) => this.setState({ lat: position.coords.latitude }),
+      err => console.log(err)
+    );
+  }
 
-  return (
-    <div>
-      <SeasonDisplay />
-    </div>
-  )
+  render() {
+    return (
+      <div>
+        Latitude: {this.state.lat}
+        <SeasonDisplay />
+      </div>
+    )
+  }
 }
 
 ReactDOM.render(<App />, document.querySelector('#root'));
