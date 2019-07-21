@@ -1,14 +1,20 @@
 import React from 'react';
 
-const VideoListItem = ({ video }) => {
-  console.log(video)
-  const thumbnail = video.snippet.thumbnails.default;
+import './VideoListItem.css';
+
+const VideoListItem = ({ video, onClick }) => {
+  const thumbnail = video.snippet.thumbnails.medium.url;
   const title = video.snippet.title;
-  const description = video.snippet.description;
-  const id = video.id.videoId;
 
   return (
-    <div>videoitem</div>
+    <div className="video-list-item item" onClick={onClick}>
+      <img className="ui image" src={thumbnail} alt={title} />
+      <div className="content">
+        <div className="header">
+          {title}
+        </div>
+      </div>
+    </div>
   )
 }
 
