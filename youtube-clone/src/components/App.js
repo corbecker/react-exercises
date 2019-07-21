@@ -8,7 +8,7 @@ class App extends React.Component {
     videos: []
   }
 
-  onSubmit = async (term) => {
+  onTermSubmit = async term => {
     const response = await youtube.get('/search/', {
       params: { q: term }
     });
@@ -18,7 +18,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="ui container" style={{ marginTop: "1rem" }}>
-        <SearchBar onSubmit={this.onSubmit} />
+        <SearchBar onTermSubmit={this.onTermSubmit} />
       </div>
     )
   }
