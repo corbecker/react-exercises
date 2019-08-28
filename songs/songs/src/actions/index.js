@@ -2,7 +2,7 @@
 export const selectSong = (song) => {
   //returns an action
   return {
-    type: 'SELECT_SONG',
+    type: 'SONG_SELECTED',
     payload: song
   }
 }
