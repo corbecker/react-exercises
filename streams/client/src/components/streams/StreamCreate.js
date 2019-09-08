@@ -13,10 +13,10 @@ class StreamCreate extends React.Component {
     }
   }
   renderInput = ({ input, label, meta }) => {
-
+    const className = `field ${meta.error && meta.touched ? 'error' : ''}`;
     return (
       //spread in all the props passed in from redux-form
-      <div className="field">
+      <div className={className}>
         <label>{label}</label>
         <input {...input} autoComplete="off" />
         {this.renderError(meta)}
@@ -30,7 +30,8 @@ class StreamCreate extends React.Component {
 
   render() {
     return (
-      <form className="ui form" onSubmit={this.props.handleSubmit(this.onSubmit)}>
+      // error classname on the form so that semantic ui doesnt hide errors
+      <form className="ui form error" onSubmit={this.props.handleSubmit(this.onSubmit)}>
         <Field name="title" component={this.renderInput} label="Title" />
         <Field name="description" component={this.renderInput} label="Description" />
         <button className="ui button primary" type="submit">Submit</button>
