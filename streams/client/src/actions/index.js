@@ -1,4 +1,5 @@
 import { SIGN_IN, SIGN_OUT } from './types'
+import streams from '../apis/streams';
 
 // Sign In called after successful sign in
 export const signIn = (id) => {
@@ -12,5 +13,11 @@ export const signIn = (id) => {
 export const signOut = () => {
   return {
     type: SIGN_OUT
+  };
+};
+
+export const createStream = (formValues) => {
+  return async (dispatch) => {
+    streams.post('/streams', formValues);
   };
 };
