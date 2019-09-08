@@ -3,20 +3,20 @@ import { Field, reduxForm } from 'redux-form';
 
 class StreamCreate extends React.Component {
 
-  renderInput({ input, label }) {
+  renderInput({ input, label, meta }) {
 
     return (
       //spread in all the props passed in from redux-form
       <div className="field">
         <label>{label}</label>
-        <input {...input} />
+        <input {...input} autoComplete="off" />
+        <div>{meta.error}</div>
       </div>
     );
   };
 
   onSubmit(formValues) {
     console.log(formValues);
-
   }
 
   render() {
@@ -45,5 +45,6 @@ const validate = (formValues) => {
 }
 
 export default reduxForm({
-  form: 'streamCreate'
+  form: 'streamCreate',
+  validate: validate
 })(StreamCreate);
