@@ -1,14 +1,10 @@
 {
   "streams": [
     {
-      "title": "Broad City Season 4",
-      "description": "Yas Queen",
+      "title": "Minecraft Ep 1",
+      "description": "Streaming epic minecraft adventures.",
+      "userID": "104744678533947980289",
       "id": 1
-    },
-    {
-      "title": "Another Stream",
-      "description": "Cool",
-      "id": 2
     }
   ]
 }
