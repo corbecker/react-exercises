@@ -27,7 +27,7 @@ class StreamList extends React.Component {
     return (
       <div>
         <h2>Streams</h2>
-        <div className="ui celled list">
+        <div className="ui very relaxed divided list">
           {this.renderList()}
         </div>
       </div>

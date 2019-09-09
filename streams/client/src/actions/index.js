@@ -18,8 +18,8 @@ export const signOut = () => {
 
 export const createStream = (formValues) => {
   return async (dispatch, getState) => {
-    const state = getState();
-    const response = await streams.post('/streams', { ...formValues, userID: state.auth.userId });
+    const { userId } = getState().auth;
+    const response = await streams.post('/streams', { ...formValues, userId });
     //send off to reducer
     dispatch({ type: CREATE_STREAM, payload: response.data });
   };
