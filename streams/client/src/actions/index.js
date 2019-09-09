@@ -31,11 +31,9 @@ export const getStream = (id) => {
   };
 };
 
-export const getStreams = () => {
-  return async (dispatch) => {
-    const response = await streams.get('/streams');
-    dispatch({ type: GET_STREAMS, payload: response.data });
-  };
+export const getStreams = () => async dispatch => {
+  const response = await streams.get('/streams');
+  dispatch({ type: GET_STREAMS, payload: response.data });
 };
 
 export const updateStream = (id, formValues) => {
@@ -47,7 +45,7 @@ export const updateStream = (id, formValues) => {
 
 export const deleteStream = (id) => {
   return async (dispatch) => {
-    const response = await streams.delete(`/streams/${id}`);
+    await streams.delete(`/streams/${id}`);
     dispatch({ type: DELETE_STREAM, payload: id })
   };
 };
