@@ -1,5 +1,6 @@
 import { SIGN_IN, SIGN_OUT, CREATE_STREAM, GET_STREAMS, GET_STREAM, DELETE_STREAM, UPDATE_STREAM } from './types'
 import streams from '../apis/streams';
+import history from '../history';
 
 // Sign In called after successful sign in
 export const signIn = (id) => {
@@ -22,6 +23,9 @@ export const createStream = (formValues) => {
     const response = await streams.post('/streams', { ...formValues, userId });
     //send off to reducer
     dispatch({ type: CREATE_STREAM, payload: response.data });
+
+    // Programatic navigation back to the homepage
+    history.push('/');
   };
 };
 

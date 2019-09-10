@@ -20,7 +20,6 @@ const streamReducer = (state = {}, action) => {
       return { ...state, [action.payload.id]: action.payload }
     case GET_STREAMS:
       //map keys takes an array and maps it to an object with specified key
-      console.log('yas')
       return { ...state, ..._.mapKeys(action.payload, 'id') };
     default:
       return state;

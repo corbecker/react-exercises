@@ -27,18 +27,20 @@ class StreamCreate extends React.Component {
   };
 
   onSubmit = (formValues) => {
-    console.log(this.props);
     this.props.createStream(formValues);
   }
 
   render() {
     return (
       // error classname on the form so that semantic ui doesnt hide errors
-      <form className="ui form error" onSubmit={this.props.handleSubmit(this.onSubmit)}>
-        <Field name="title" component={this.renderInput} label="Title" />
-        <Field name="description" component={this.renderInput} label="Description" />
-        <button className="ui button primary" type="submit">Submit</button>
-      </form>
+      <div>
+        <h2>Create Stream</h2>
+        <form className="ui form error" onSubmit={this.props.handleSubmit(this.onSubmit)}>
+          <Field name="title" component={this.renderInput} label="Title" />
+          <Field name="description" component={this.renderInput} label="Description" />
+          <button className="ui button primary" type="submit">Submit</button>
+        </form>
+      </div>
     )
   };
 };
