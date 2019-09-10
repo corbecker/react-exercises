@@ -1,11 +1,24 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-const StreamEdit = (props) => {
+import { getStream } from '../../actions';
 
-  return (
-    <h3>Edit Stream</h3>
-  )
+class StreamEdit extends React.Component {
+
+  // In react router every component should fetch its own data
+  componentDidMount() {
+    this.props.getStream(this.props.match.params.id);
+  }
+
+  render() {
+    console.log(this.props)
+    if (!this.props.stream) {
+      return <div>Loading...</div>
+    }
+    return (
+      <h3>{this.props.stream.title}</h3>
+    )
+  };
 };
 
 const mapStateToProps = (state, ownProps) => {
@@ -13,4 +26,4 @@ const mapStateToProps = (state, ownProps) => {
   return { stream: state.streams[ownProps.match.params.id] }
 }
 
-export default connect(mapStateToProps)(StreamEdit);
+export default connect(mapStateToProps, { getStream })(StreamEdit);
