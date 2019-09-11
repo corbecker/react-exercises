@@ -36,15 +36,16 @@ export const getStream = (id) => {
   };
 };
 
-export const getStreams = () => async (dispatch, getState) => {
+export const getStreams = () => async (dispatch) => {
   const response = await streams.get('/streams');
   dispatch({ type: GET_STREAMS, payload: response.data });
 };
 
-export const updateStream = (id, formValues) => {
+export const editStream = (id, formValues) => {
   return async (dispatch) => {
     const response = await streams.put(`/streams/${id}`, formValues);
     dispatch({ type: UPDATE_STREAM, payload: response.data });
+    history.push('/');
   };
 };
 
