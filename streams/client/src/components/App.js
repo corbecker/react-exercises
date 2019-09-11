@@ -24,7 +24,8 @@ const App = () => {
           <Route path="/streams/show" exact component={StreamShow} />
         </div>
       </Router>
-    </div>
+      <div className="mt ui inverted vertical footer segment"></div>
+    </div >
   )
 };
 
