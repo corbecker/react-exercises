@@ -21,30 +21,6 @@
       "description": "I play Minecraft for 12 hours straight.",
       "userId": "104744678533947980289",
       "id": 6
-    },
-    {
-      "title": "test new stream creation",
-      "description": "this is me testing the creation of a new form",
-      "userId": "104744678533947980289",
-      "id": 8
-    },
-    {
-      "title": "Try to edit this stream again.",
-      "description": "cool this stream has been edited",
-      "userId": "104744678533947980289",
-      "id": 10
-    },
-    {
-      "title": "Superbowl live Broadcast",
-      "description": "Watch the 2020 Superbowl",
-      "userId": "104744678533947980289",
-      "id": 11
-    },
-    {
-      "title": "Brand spanking new stream.",
-      "description": "This is a new stream description",
-      "userId": "104744678533947980289",
-      "id": 12
     }
   ]
 }

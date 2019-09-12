@@ -3,6 +3,8 @@ import Modal from '../Modal';
 import history from '../../history';
 import { deleteStream, getStream } from '../../actions';
 import { connect } from 'react-redux';
+import StreamList from './StreamList';
+import { Link } from 'react-router-dom';
 
 class StreamDelete extends React.Component {
 
@@ -16,13 +18,12 @@ class StreamDelete extends React.Component {
 
   deleteStream = () => {
     this.props.deleteStream(this.props.match.params.id);
-    this.close();
   }
 
   renderActions = () => {
     return (
       <>
-        <button onClick={() => { this.close() }} className="ui button">Cancel</button>
+        <Link to={'/'} className="ui button">Cancel</Link>
         <button onClick={() => this.deleteStream()} className="ui button negative">Delete</button>
       </>
     )
@@ -41,12 +42,15 @@ class StreamDelete extends React.Component {
 
   render() {
     return (
-      <Modal
-        header={this.renderTitle()}
-        content="Are you sure you want to delete this stream?"
-        actions={this.renderActions()}
-        onDismiss={() => this.close()}
-      ></Modal>
+      <div>
+        <StreamList></StreamList>
+        <Modal
+          header={this.renderTitle()}
+          content="Are you sure you want to delete this stream?"
+          actions={this.renderActions()}
+          onDismiss={() => this.close()}
+        ></Modal>
+      </div>
     )
   };
 };

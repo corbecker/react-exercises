@@ -15,7 +15,7 @@ const streamReducer = (state = {}, action) => {
       // ES6 key interpolation
       return { ...state, [action.payload.id]: action.payload }
     case DELETE_STREAM:
-      return { ...state, [action.payload]: undefined }
+      return { ..._.omit(state, [action.payload]) }
     case GET_STREAM:
       return { ...state, [action.payload.id]: action.payload }
     case GET_STREAMS:
