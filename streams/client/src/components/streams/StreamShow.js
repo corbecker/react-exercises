@@ -14,9 +14,12 @@ class StreamShow extends React.Component {
       return <div>Loading...</div>
     }
     return (
-      <h2>{this.props.stream.title}</h2>
+      <div>
+        <h2>{this.props.stream.title}</h2>
+        <h5>{this.props.stream.description}</h5>
+      </div>
     )
-  }
+  };
 };
 
 const mapStateToProps = (state, ownProps) => {
