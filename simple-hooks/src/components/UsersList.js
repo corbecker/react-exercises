@@ -3,12 +3,12 @@ import useResources from './useResources';
 import '../styles/style.css';
 
 const listItems = (resource) => {
-  return resource.map(resource => <li className="item" key={resource.id}>{resource.title}</li>)
+  return resource.map(resource => <li className="item" key={resource.id}>{resource.name}</li>)
 }
 
-const ResourceList = ({ resource }) => {
+const UsersList = () => {
 
-  const resources = useResources(resource);
+  const resources = useResources("users");
 
   return (
     <div className="mt">
@@ -19,4 +19,4 @@ const ResourceList = ({ resource }) => {
   )
 }
 
-export default ResourceList;
+export default UsersList;

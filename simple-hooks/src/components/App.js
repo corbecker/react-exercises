@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ResourceList from './ResourceList';
+import UsersList from './UsersList';
 import '../styles/style.css';
 
 const App = () => {
@@ -13,6 +14,7 @@ const App = () => {
         <button onClick={() => setResource("todos")} className="ui button">todos</button>
       </div>
       <ResourceList resource={resource}></ResourceList>
+      <UsersList />
     </div>
   )
 };
