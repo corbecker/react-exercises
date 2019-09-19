@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 
 import SeasonDisplay from './SeasonDisplay';
@@ -7,31 +7,32 @@ import Spinner from './Spinner';
 //location user and current month
 //pass season to seasondisplay component
 
-class App extends React.Component {
+const App = () => {
 
-  state = { lat: null, errorMessage: '' }
+  const [lat, setLat] = useState(null);
+  const [errorMessage, setErrorMessage] = useState('');
 
-  componentDidMount() {
+  useEffect(() => {
     window.navigator.geolocation.getCurrentPosition(
-      position => this.setState({ lat: position.coords.latitude }),
-      err => this.setState({ errorMessage: err.message })
+      position => setLat(position.coords.latitude),
+      err => setErrorMessage(err.message)
     );
-  }
+  }, []);
 
-  componentDidUpdate() {
+  useEffect(() => {
     console.log('component was updated')
+  }, [lat]);
+
+
+  if (errorMessage && !lat) {
+    return <div>Error: {errorMessage}</div>
+  }
+  if (!errorMessage && lat) {
+    return <SeasonDisplay lat={lat} />
   }
 
-  render() {
-    if (this.state.errorMessage && !this.state.lat) {
-      return <div>Error: {this.state.errorMessage}</div>
-    }
-    if (!this.state.errorMessage && this.state.lat) {
-      return <SeasonDisplay lat={this.state.lat} />
-    }
+  return <Spinner message="Please accept location request." />
 
-    return <Spinner message="Please accept location request." />
-  }
 }
 
 ReactDOM.render(<App />, document.querySelector('#root'));
