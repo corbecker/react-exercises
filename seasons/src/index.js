@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
+import useLocation from './useLocation';
 
 import SeasonDisplay from './SeasonDisplay';
 import Spinner from './Spinner';
@@ -8,21 +9,7 @@ import Spinner from './Spinner';
 //pass season to seasondisplay component
 
 const App = () => {
-
-  const [lat, setLat] = useState(null);
-  const [errorMessage, setErrorMessage] = useState('');
-
-  useEffect(() => {
-    window.navigator.geolocation.getCurrentPosition(
-      position => setLat(position.coords.latitude),
-      err => setErrorMessage(err.message)
-    );
-  }, []);
-
-  useEffect(() => {
-    console.log('component was updated')
-  }, [lat]);
-
+  const [lat, errorMessage] = useLocation();
 
   if (errorMessage && !lat) {
     return <div>Error: {errorMessage}</div>
